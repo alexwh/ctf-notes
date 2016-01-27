@@ -1,0 +1,17 @@
+this only works when you patch the source for the rsa module to not blindly
+fail when it doesn't get the correct magic bytes
+
+unified diff:
+--- pkcs1.py    2015-12-29 00:12:29.240000000 +0000
++++ /usr/local/lib/python3.4/dist-packages/rsa/pkcs1.py 2015-12-29 00:13:09.376000000 +0000
+@@ -228,8 +228,8 @@
+     cleartext = transform.int2bytes(decrypted, blocksize)
+ 
+     # If we can't find the cleartext marker, decryption failed.
+-    # if cleartext[0:2] != b('\x00\x02'):
+-    #     raise DecryptionError('Decryption failed')
++    if cleartext[0:2] != b('\x00\x02'):
++        raise DecryptionError('Decryption failed')
+     
+     # Find the 00 separator between the padding and the message
+     try:

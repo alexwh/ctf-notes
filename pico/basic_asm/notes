@@ -1,0 +1,3 @@
+gcc test.s -o test
+
+gdb

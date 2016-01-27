@@ -1,0 +1,10 @@
+❯ binwalk -e image.png 
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             PNG image, 280 x 280, 8-bit/color RGB, non-interlaced
+59            0x3B            Zlib compressed data, default compression, uncompressed size >= 235480
+1548          0x60C           7-zip archive data, version 0.3
+1624          0x658           LZMA compressed data, properties: 0x5D, dictionary size: 65536 bytes, missing uncompressed size
+
+dd if=image.png of=wow.7z skip=1548 count=138 bs=1

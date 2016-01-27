@@ -1,0 +1,4 @@
+❯ gdb ./problem -batch -n -ex "p find_string" 
+$1 = {<text variable, no debug info>} 0x8048444 <find_string>
+
+flag = 8048444

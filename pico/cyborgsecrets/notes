@@ -1,0 +1,27 @@
+[0x080484fd]> pdf
+/ (fcn) sym.main 180
+|          ; arg int arg_0_1      @ ebp+0x1
+|          ; arg int arg_3        @ ebp+0xc
+|          ; DATA XREF from 0x080483c7 (entry0)
+|          ;-- main:
+|          ;-- sym.main:
+|          0x080484fd    55             push ebp
+|          0x080484fe    89e5           mov ebp, esp
+|          0x08048500    83e4f0         and esp, 0xfffffff0
+|          0x08048503    83ec20         sub esp, 0x20
+|          0x08048506    c74424186c86.  mov dword [esp + 0x18], str.TODO:_REMOVE_DEBUG_PASSWORD_  ; [0x804866c:4]=0x4f444f54  ; "TODO: REMOVE DEBUG PASSWORD!" @ 0x804866c
+|          0x0804850e    c744241c8c86.  mov dword [esp + 0x1c], str.DEBUG_PASSWORD:_2manyHacks_Debug_Admin_Test  ; [0x804868c:4]=0x55424544  ; "DEBUG PASSWORD: 2manyHacks_Debug_Admin_Test" @ 0x804868c
+
+
+pico62187@shell:/home/cyborgsecrets$ ./cyborg_defense 2manyHacks_Debug_Admin_Test
+______               _       _             _____                  
+|  _  \             | |     | |           /  __ \                 
+| | | |__ _  ___  __| | __ _| |_   _ ___  | /  \/ ___  _ __ _ __  
+| | | / _` |/ _ \/ _` |/ _` | | | | / __| | |    / _ \| '__| '_ \ 
+| |/ / (_| |  __/ (_| | (_| | | |_| \__ \ | \__/\ (_) | |  | |_) |
+|___/ \__,_|\___|\__,_|\__,_|_|\__,_|___/  \____/\___/|_|  | .__/ 
+                                                           | |    
+                                                           |_|
+Password: 2manyHacks_Debug_Admin_Test
+Authorization successful.
+403-shutdown-for-what

