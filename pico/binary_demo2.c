@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
   // line1X is a string that starts at the second half of the line1 buffer.
   // This string now "overlaps" with the "line1" string, since both line1 and
   // line1X point to the same buffer space.
-  char *line1X = &amp;line1[10];
+  char *line1X = &line1[10];
 
 
   // This next line overwrites the 10th character of the line1 buffer with a null
