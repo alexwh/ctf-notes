@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-with open("token") as f:
-    text = f.read().strip() # doesn't like newlines
+text = "857:g67?5ABBo:BtDA?tIvLDKL{MQPSRQWW."
 
 for i, char in enumerate(text):
     print(chr(ord(char) - i), end='')
