@@ -49,9 +49,14 @@ mapper = {
 }
 
 r = remote("188.166.133.53", 11071)
-for i in range(1, 101):
-    r.recvuntil(": ")
-    string = r.recvuntil("\n").strip()
+r.recvline() # welcome
+while True:
+    output = r.recvline()
+    if "IW" in output:
+        break
+    print(output)
+    # Level 1.: 4.4.5.3.3.3.3.3.3.3.5.6.3.3.3.3.3.4.3.4.3.4.4.3.3.3.3.3.3.4.6.4.3.3.3.3.3.4.3.5.3.4.5.3
+    string = output.split()[2]
     decoded = yo.decode(string)
     print decoded
     split = decoded.split(" ")
@@ -59,9 +64,6 @@ for i in range(1, 101):
     first = split[2]
     result = split[4]
     print type,first,result
-    tosend = yo.encode(str(mapper[type](int(result), int(first))))
-    print(tosend)
-    r.sendline(tosend)
-    print r.recvuntil("\n")
-print(r.recv(1024))
-
+    r.sendline(yo.encode(str(mapper[type](int(result), int(first)))))
+    print r.recvline()
+print(output)
