@@ -4,20 +4,23 @@ from pwn import *
 import operator
 r = remote("188.166.133.53", 11027)
 mapper = {
-	"+": operator.sub,
-	"-": operator.add,
-	"*": operator.div,
+    "+": operator.sub,
+    "-": operator.add,
+    "*": operator.div,
 }
-for i in range(1, 101):
-	r.readuntil("Level {}.: x ".format(i))
-	type = r.recv(1)
-	r.recv(1)
-	first = r.recvuntil(" ").strip()
-	r.recvuntil("= ")
-	result = r.recvuntil("\n").strip()
-	print(type, first, result)
-	tosend = str(mapper[type](int(result), int(first)))
-	print(tosend)
-	r.sendline(tosend)
-	output = r.recvuntil("\n")
-print(r.recv(1024))
+r.recvline() # welcome
+while True:
+    output = r.recvline()
+    if "IW" in output:
+        break
+    print(output)
+    expr = output.split()
+    # expr looks like ['Level', '1.:', 'x', '+', '7', '=', '11']
+    oper = expr[3]
+    first = expr[4]
+    result = expr[6]
+    answer = str(mapper[oper](int(result), int(first)))
+    log.info(answer)
+    r.sendline(answer)
+    print(r.recvline())
+print(output)
