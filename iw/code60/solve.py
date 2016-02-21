@@ -13,10 +13,10 @@ def find_prime_range(a, b):
     return None
 
 for i in range(1,101):
-	print(r.recvuntil("Find the next prime number after "))
-	primeafter = int(r.recvuntil(":")[:-1])
-	tosend = find_prime_range(primeafter+1, (primeafter+1)*2)
-	r.sendline(tosend)
-	log.info("prime after " + str(primeafter) + " is " + str(tosend))
-	r.recvuntil("\n")
+    print(r.recvuntil("Find the next prime number after "))
+    primeafter = int(r.recvuntil(":")[:-1])
+    tosend = find_prime_range(primeafter+1, (primeafter+1)*2)
+    r.sendline(tosend)
+    log.info("prime after " + str(primeafter) + " is " + str(tosend))
+    r.recvuntil("\n")
 print(r.recvall())
