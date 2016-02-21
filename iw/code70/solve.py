@@ -43,9 +43,9 @@ class whatever:
 
 yo = whatever()
 mapper = {
-	"+": operator.sub,
-	"-": operator.add,
-	"*": operator.div,
+    "+": operator.sub,
+    "-": operator.add,
+    "*": operator.div,
 }
 
 r = remote("188.166.133.53", 11071)
