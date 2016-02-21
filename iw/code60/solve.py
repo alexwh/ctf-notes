@@ -12,11 +12,17 @@ def find_prime_range(a, b):
             return str(p)
     return None
 
-for i in range(1,101):
-    print(r.recvuntil("Find the next prime number after "))
-    primeafter = int(r.recvuntil(":")[:-1])
+r.recvline() # welcome
+while True:
+    output = r.recvline()
+    if "IW" in output:
+        break
+    print(output)
+    # Level 1.: Find the next prime number after 9:
+    primeafter = int(output.split()[-1][:-1])
+    print(primeafter)
     tosend = find_prime_range(primeafter+1, (primeafter+1)*2)
     r.sendline(tosend)
     log.info("prime after " + str(primeafter) + " is " + str(tosend))
-    r.recvuntil("\n")
-print(r.recvall())
+    print(r.recvline())
+print(output)
