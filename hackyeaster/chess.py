@@ -9,5 +9,4 @@ state = """00000001
 10000011
 00000000"""
 
-for i in state.split():
-    print(int(i, 2))
+print("-".join(str(int(i, 2)) for i in state.split()))
