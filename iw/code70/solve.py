@@ -5,6 +5,7 @@ class whatever:
     def _xor(self, charcode):
         return charcode ^ (2<<4)
 
+    # this isn't mine, it's from https://gist.github.com/moshekaplan/4678925
     def chunks(self, l, n):
         """Yield successive n-sized chunks from l."""
         for i in xrange(0, len(l), n):
