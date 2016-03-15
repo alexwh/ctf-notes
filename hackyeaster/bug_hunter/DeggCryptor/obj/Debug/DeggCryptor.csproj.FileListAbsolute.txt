@@ -1,0 +1,9 @@
+C:\Users\jogn\Downloads\sourcecode\DeggCryptor\bin\Debug\DeggCryptor.exe.config
+C:\Users\jogn\Downloads\sourcecode\DeggCryptor\bin\Debug\DeggCryptor.exe
+C:\Users\jogn\Downloads\sourcecode\DeggCryptor\bin\Debug\DeggCryptor.pdb
+C:\Users\jogn\Downloads\sourcecode\DeggCryptor\obj\Debug\DeggCryptor.csprojResolveAssemblyReference.cache
+C:\Users\jogn\Downloads\sourcecode\DeggCryptor\obj\Debug\DeggCryptor.MainForm.resources
+C:\Users\jogn\Downloads\sourcecode\DeggCryptor\obj\Debug\DeggCryptor.Properties.Resources.resources
+C:\Users\jogn\Downloads\sourcecode\DeggCryptor\obj\Debug\DeggCryptor.csproj.GenerateResource.Cache
+C:\Users\jogn\Downloads\sourcecode\DeggCryptor\obj\Debug\DeggCryptor.exe
+C:\Users\jogn\Downloads\sourcecode\DeggCryptor\obj\Debug\DeggCryptor.pdb
