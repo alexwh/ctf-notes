@@ -1,0 +1,14 @@
+just used wireshark's export objects and statistics>http>requests to get the git repo contents/filenames
+I noted down this monstrosity for some reason, it probably worked
+`for i in $(cut -f3- -d '/' files);do mkdir .git/objects/$(cut -f2 -d '/' <<< $i);mv $(cut -f3 -d '/' <<< $i) .git/$i;done`
+
+putting the objects back in their place and fscking the repo gets it back in working order, with these commits:
+
+32144c8 [3 months ago] (HEAD -> master) getpid() is too predictible. [Keymaster]
+402ecd7 [4 months ago] Remove debugging code now that keygen is stable. [Keymaster]
+4f93390 [1 year ago] Set e=65537, time function calls during testing. [Keymaster]
+a86164f [1 year ago] Use stronger primes for generating RSA keys. [Keymaster]
+a6c82cd [1 year ago] Add a better random number generator. [Keymaster]
+c38cfa0 [1 year, 1 month ago] Basic tool for generating self-signed certificates. [Keymaster]
+
+got stuck with the keygen, I suck at crypto.
