@@ -1,0 +1,9 @@
+level description hints at robots.txt:
+Disallow: /admin
+
+/admin tells us we're not registered, so we register and a cookie gets set to the hash of our username.
+change the cookie to be the hash of "admin" (21232f297a57a5a743894a0e4a801fc3) and we get the flag:
+
+The authentication server says..
+
+Congratulations, your token is 'CTF{renaming-a-bunch-of-levels-sure-is-annoying}'
